@@ -1,3 +1,4 @@
+import Contact from "./Contact";
 
 const Footer = () => {
     return (
@@ -9,8 +10,7 @@ const Footer = () => {
                 </div>
                 <div className="col-lg-4">
                     <h5>Contact</h5>
-                    <a href="mailto:ravimahar5695@gmail.com" className="text-decoration-none"><i class="fa-solid fa-envelope"></i> ravimahar5695@gmail.com</a><br/>
-                    <a href="tel:8503016814" className="text-decoration-none"><i class="fa-solid fa-phone"></i> 8503016814</a>
+                    <Contact/>
                 </div>
                 <div className="col-lg-4">
                     <h5>Top Posts</h5>

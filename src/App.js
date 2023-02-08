@@ -12,6 +12,7 @@ import CreateCategory from "./admin/CreateCategory";
 import AdminViewPosts from "./admin/AdminViewPosts";
 import AllCategories from "./category/AllCategories";
 import AllUsers from "./user/AllUsers";
+import ContactRequests from "./core/ContactRequests";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/admin/posts/view" element={<AdminViewPosts/>}/>
         <Route path="/categories" element={<AllCategories/>}/>
         <Route path="/authors" element={<AllUsers/>}/>
+        <Route path="/admin/contact-requests" element={<ContactRequests/>}/>
       </Routes>
     </BrowserRouter>
   );

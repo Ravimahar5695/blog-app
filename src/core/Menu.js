@@ -46,6 +46,11 @@ const Menu = () => {
                             <Link className="nav-link" to="/admin/category/create">Create Category</Link>
                         </li>
                     }
+                    {isAuthenticated() && role === 1 &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/admin/contact-requests">Contact Requests</Link>
+                        </li>
+                    }
                     {isAuthenticated() &&
                     <li className="nav-item">
                         <span className="nav-link" style={{cursor: "pointer"}} onClick={
