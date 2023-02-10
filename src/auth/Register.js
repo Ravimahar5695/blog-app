@@ -12,10 +12,11 @@ const Register = () => {
         password: "",
         error: "",
         success: false,
-        buttonText: "Register"
+        buttonText: "Register",
+        cursor: "pointer"
     });
 
-    const {name, email, password, error, success, buttonText} = values;
+    const {name, email, password, error, success, buttonText, cursor} = values;
 
     const handleChange = (name) => {
         return (event) => {
@@ -25,7 +26,7 @@ const Register = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading..."});
+        setValues({...values, buttonText: "Loading...", cursor: "progress"});
         register({name, email, password}).then((data) => {
             if(data.error){
                 setValues({...values, buttonText: "Register", error: data.error});
@@ -70,23 +71,19 @@ const Register = () => {
                     <label className="form-label">Password</label>
                     <input type="password" className="form-control" value={password} onChange={handleChange("password")}/>
                 </div>
-                <button type="button" className="btn text-light bg-dark w-100" style={{border: "none"}} onClick={handleSubmit}>{buttonText}</button>
+                <button type="button" className="btn text-light bg-dark w-100" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }
 
     return (
-        <div className="container">
-            <Menu/>
-            <div className="row mb-5">
-                <div className="col-lg-6 offset-lg-3">
-                    <h1 className="text-center mb-4">Register</h1>
-                    {handleError()}
-                    {handleSuccess()}
-                    {registerForm()}
-                </div>
+        <div>
+            <div className="shadow p-5 register-container">
+                <h1 className="text-center mb-4">Register</h1>
+                {handleError()}
+                {handleSuccess()}
+                {registerForm()}
             </div>
-            <Footer/>
         </div>
     );
 }

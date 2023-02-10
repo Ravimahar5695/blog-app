@@ -26,30 +26,43 @@ const ViewPosts = () => {
         return <Navigate to="/login"/>
     } else{
         return (
-            <div className="container">
+            <div>
                 <Menu/>
+                <div className="container">
                 <h1 className="text-center">Posts</h1>
                 <div className='row text-center'>
-                    <div className="col-8 border py-2">
+                <div className="col-1 border py-2">
+                        <b>#</b>
+                    </div>
+                    <div className="col-6 border py-2">
                         <b>Title</b>
+                    </div>
+                    <div className="col-2 border py-2">
+                        <b>Category</b>
                     </div>
                     <div className="col-2 border py-2">
                         <b>Update</b>
                     </div>
-                    <div className="col-2 border py-2">
+                    <div className="col-1 border py-2">
                         <b>Delete</b>
                     </div>
                 </div>
                     {posts && posts.map((post, index) => {
                         return (
                             <div key={index} className='row text-center'>
-                                <div className="col-8 border py-2">
+                                <div className="col-1 border py-2">
+                                    {index+1}
+                                </div>
+                                <div className="col-6 border py-2">
                                     {post.title}
+                                </div>
+                                <div className="col-2 border py-2">
+                                    {post.category.name}
                                 </div>
                                 <div className="col-2 border py-2">
                                     <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
                                 </div>
-                                <div className="col-2 border py-2">
+                                <div className="col-1 border py-2">
                                     <i className="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
                                         deletePost(userId, token, post._id);
                                         window.location.reload();
@@ -59,6 +72,7 @@ const ViewPosts = () => {
                         );
                     })}
                     <div className="mb-5"></div>
+                    </div>
                 <Footer/>
             </div>
         );

@@ -13,7 +13,6 @@ const AdminViewPosts = () => {
     const {userId, token} = isAuthenticated();
 
     const role = secureLocalStorage.getItem("role");
-    console.log(role)
 
     const [posts, setPosts] = useState([]);
 
@@ -29,11 +28,15 @@ const AdminViewPosts = () => {
 
     if(isAuthenticated() && role === 1){
         return (
-            <div className="container">
+            <div>
                 <Menu/>
+                <div className="container">
                 <h1 className="text-center mb-4">Posts</h1>
                 <div className='row text-center'>
-                    <div className="col-6 border py-2">
+                <div className="col-1 border py-2">
+                        <b>#</b>
+                    </div>
+                    <div className="col-5 border py-2">
                         <b>Title</b>
                     </div>
                     <div className="col-2 border py-2">
@@ -52,7 +55,10 @@ const AdminViewPosts = () => {
                 {posts && posts.map((post, index) => {
                         return (
                             <div key={index} className='row text-center'>
-                                <div className="col-6 border py-2">
+                                <div className="col-1 border py-2">
+                                    {index+1}
+                                </div>
+                                <div className="col-5 border py-2">
                                     {post.title}
                                 </div>
                                 <div className="col-2 border py-2">
@@ -75,6 +81,7 @@ const AdminViewPosts = () => {
                             </div>
                         );
                     })}
+                    </div>
                 <Footer/>
             </div>
         );

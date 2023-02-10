@@ -14,3 +14,43 @@ code {
   margin-left: 0px;
   margin-right: 0px;
 }
+
+
+.login-container, .register-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+@media only screen and (width < 576px) {
+  .login-container, .register-container{
+    width: 90%;
+  }
+}
+@media only screen and (width > 576px) and (width < 768px) {
+  .login-container, .register-container{
+    width: 70%;
+  }
+}
+@media only screen and (width > 768px) and (width < 992px) {
+  .login-container, .register-container{
+    width: 50%;
+  }
+}
+@media only screen and (width > 992px) and (width < 1200px) {
+  .login-container, .register-container{
+    width: 40%;
+  }
+}
+@media only screen and (width > 1200px) and (width < 1400px) {
+  .login-container, .register-container{
+    width: 30%;
+  }
+}
+@media only screen and (width > 1400px) {
+  .login-container, .register-container{
+    width: 25%;
+  }
+}

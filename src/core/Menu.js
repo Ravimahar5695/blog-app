@@ -1,4 +1,4 @@
-import {Link, NavLink} from "react-router-dom";
+import {Link, Navigate, NavLink} from "react-router-dom";
 import secureLocalStorage from "react-secure-storage";
 import {isAuthenticated, logout} from "../auth/helper/authapicalls";
 
@@ -7,7 +7,7 @@ const Menu = () => {
     const role = secureLocalStorage.getItem("role")
     
     return (
-        <nav className="navbar navbar-expand-lg pt-5 pb-5 mb-5 bg-light" style={{backgroundColor: "#FF5733"}}>
+        <nav className="navbar navbar-expand-lg pt-5 pb-5 mb-5 bg-light shadow-sm" style={{backgroundColor: "#FF5733"}}>
             <div className="container">
                 <Link className="navbar-brand" to="/">
                     <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="35" height="30" className="d-inline-block align-text-top"/>

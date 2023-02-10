@@ -9,10 +9,11 @@ const Comment = ({post}) => {
         comment: "",
         error: "",
         success: false,
-        buttonText: "Comment"
+        buttonText: "Comment",
+        cursor: "pointer"
     });
 
-    const {name, email, comment, error, success, buttonText} = values;
+    const {name, email, comment, error, success, buttonText, cursor} = values;
 
     const handleChange = (name) => (event) => {
         setValues({...values, [name]: event.target.value});
@@ -20,7 +21,7 @@ const Comment = ({post}) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading..."});
+        setValues({...values, buttonText: "Loading...", cursor: "progress"});
         addComment(post._id, {name, email, comment}).then((data) => {
             if(data.error){
                 setValues({...values, error: data.error, buttonText: "Comment"});
@@ -55,7 +56,7 @@ const Comment = ({post}) => {
                     <label className="form-label">Comment</label>
                     <textarea className="form-control" rows="3" value={comment} onChange={handleChange("comment")}></textarea>
                 </div>
-                <button className="btn text-light bg-dark" style={{border: "none"}} onClick={handleSubmit}>{buttonText}</button>
+                <button className="btn text-light bg-dark" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }

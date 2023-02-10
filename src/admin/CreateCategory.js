@@ -16,10 +16,11 @@ const CreateCategory = () => {
         name: "",
         error: "",
         success: false,
-        buttonText: "Create Category"
+        buttonText: "Create Category",
+        cursor: "pointer"
     });
 
-    const {name, error, success, buttonText} = values;
+    const {name, error, success, buttonText, cursor} = values;
 
     const handleChange = (event) => {
         setValues({...values, name: event.target.value});
@@ -27,7 +28,7 @@ const CreateCategory = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading..."});
+        setValues({...values, buttonText: "Loading...", cursor: "progress"});
         createCategory(userId, token, {name}).then((data) => {
             if(data.error){
                 setValues({...values, buttonText: "Create Category", error: data.error});
@@ -64,21 +65,23 @@ const CreateCategory = () => {
                     <label className="form-label">Category Name</label>
                     <input type="text" className="form-control" value={name} onChange={handleChange}/>
                 </div>
-                <button className="btn text-light bg-dark" style={{border: "none"}} onClick={handleSubmit}>{buttonText}</button>
+                <button className="btn text-light bg-dark" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }
 
     if(isAuthenticated() && role === 1){
         return (
-            <div className="container">
+            <div>
                 <Menu/>
-                <div className="row mb-5">
-                    <div className="col-lg-6 offset-lg-3">
-                        <h1 className="text-center mb-4">Create Category</h1>
-                        {handleError()}
-                        {handleSuccess()}
-                        {createCategoryForm()}
+                <div className="container">
+                    <div className="row mb-5">
+                        <div className="col-lg-6 offset-lg-3">
+                            <h1 className="text-center mb-4">Create Category</h1>
+                            {handleError()}
+                            {handleSuccess()}
+                            {createCategoryForm()}
+                        </div>
                     </div>
                 </div>
                 <Footer/>

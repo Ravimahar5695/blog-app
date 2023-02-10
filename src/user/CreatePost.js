@@ -23,10 +23,11 @@ const CreatePost = () => {
         success: false,
         buttonText: "Post",
         categories: "",
-        formData: ""
+        formData: "",
+        cursor: "pointer"
     });
 
-    const {picture, category, title, description, error, success, buttonText, categories, formData} = values;
+    const {picture, category, title, description, error, success, buttonText, categories, formData, cursor} = values;
 
     useEffect(() => {
         getAllCategories().then((data) => {
@@ -52,7 +53,7 @@ const CreatePost = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading..."});
+        setValues({...values, buttonText: "Loading...", cursor: "progress"});
         createPost(userId, token, formData).then((data) => {
             if(data.error){
                 setValues({...values, buttonText: "Post", error: data.error});
@@ -123,7 +124,7 @@ const CreatePost = () => {
                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                         }}/>
                 </div>
-                <button className="btn text-light w-25 bg-dark" style={{border: "none"}} onClick={handleSubmit}>{buttonText}</button>
+                <button className="btn text-light w-25 bg-dark" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }

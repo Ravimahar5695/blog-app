@@ -36,12 +36,13 @@ const Post = () => {
     });
     const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
     return (
-        <div className="container">
+        <div>
             <Menu/>
+            <div className="container">
             <img src={imageurl} className="mb-5" style={{height: "400px", width: "100%"}}/>
             <div>
-                <Link to={`/category/${category._id}/posts`} target="_blank"><small className="text-muted badge bg-light">{category.name}</small></Link>&nbsp;
-                <Link to={`/user/${user._id}/posts`} target="_blank"><small className="text-muted badge bg-light">{user.name}</small></Link>
+                <Link to={`/category/${category._id}/posts`}><small className="text-muted badge bg-light">{category.name}</small></Link>&nbsp;
+                <Link to={`/user/${user._id}/posts`}><small className="text-muted badge bg-light">{user.name}</small></Link>
             </div>
             <h1 className="mt-3 mb-4 text-dark">{post.title}</h1>
             {parse(`<div>${post.description}</div>`)}
@@ -95,6 +96,7 @@ const Post = () => {
                     }
                 </ul>
             }
+            </div>
             <Footer/>
         </div>
     );

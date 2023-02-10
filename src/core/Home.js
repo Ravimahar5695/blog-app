@@ -6,6 +6,7 @@ import {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 import { getAllUsers } from "../user/helper/userapicalls";
 
+
 const Home = () => {
 
     const [categories, setCategories] = useState([]);
@@ -55,13 +56,11 @@ const Home = () => {
     return (
         <div className="fluid-container">
             <Menu/>
+            <AllPosts/>
             <div className="row">
-                <div className="col-lg-8">
-                    <AllPosts/>
-                </div>
                 <div className="col-lg-4">
-                    <div className="card mb-3" >
-                        <div className="card-header text-light bg-dark">
+                    <div className="card mb-4">
+                        <div className="card-header text-light bg-success">
                             <b>Categories</b>
                         </div>
                         <ul className="list-group list-group-flush">
@@ -69,8 +68,21 @@ const Home = () => {
                             <Link className="list-group-item" to="/categories">More Categories...</Link>
                         </ul>
                     </div>
-                    <div className="card" >
-                        <div className="card-header text-light bg-dark" style={{backgroundColor: "#FF5733"}}>
+                </div>
+                <div className="col-lg-4">
+                    <div className="card mb-4">
+                        <div className="card-header text-light bg-success">
+                            <b>Authors</b>
+                        </div>
+                        <ul className="list-group list-group-flush">
+                            {showUsers()}
+                            <Link className="list-group-item" to="/authors">More Authors...</Link>
+                        </ul>
+                    </div>
+                </div>
+                <div className="col-lg-4">
+                    <div className="card mb-4">
+                        <div className="card-header text-light bg-success">
                             <b>Authors</b>
                         </div>
                         <ul className="list-group list-group-flush">

@@ -9,10 +9,11 @@ const Contact = () => {
         message: "",
         error: "",
         success: false,
-        buttonText: "Submit"
+        buttonText: "Submit",
+        cursor: "pointer"
     });
 
-    const {name, email, message, error, success, buttonText} = values;
+    const {name, email, message, error, success, buttonText, cursor} = values;
 
     const handleChange = (name) => {
         return (event) => {
@@ -22,7 +23,7 @@ const Contact = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading..."});
+        setValues({...values, buttonText: "Loading...", cursor: "progress"});
         contact({name, email, message}).then((data) => {
             if(data.error){
                 setValues({...values, buttonText: "Submit", error: data.error});
@@ -56,15 +57,15 @@ const Contact = () => {
         return (
             <form>
                 <div className="mb-3">
-                    <input type="text" className="form-control" placeholder="Name" value={name} onChange={handleChange("name")}/>
+                    <input type="text" className="form-control" placeholder="Name*" value={name} onChange={handleChange("name")}/>
                 </div>
                 <div className="mb-3">
-                    <input type="email" className="form-control" placeholder="Email Address" value={email} onChange={handleChange("email")}/>
+                    <input type="email" className="form-control" placeholder="Email Address*" value={email} onChange={handleChange("email")}/>
                 </div>
                 <div className="mb-3">
-                    <textarea className="form-control" placeholder="Message" value={message} onChange={handleChange("message")}></textarea>
+                    <textarea className="form-control" placeholder="Message*" value={message} onChange={handleChange("message")}></textarea>
                 </div>
-                <button class="btn btn-dark text-light" type="submit" onClick={handleSubmit}>{buttonText}</button>
+                <button class="btn btn-warning text-light w-100" style={{cursor: `${cursor}`}} type="submit" onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }
