@@ -1,5 +1,3 @@
-import Menu from "../core/Menu";
-import Footer from "../core/Footer";
 import {isAuthenticated, login} from "./helper/authapicalls";
 import {useState} from "react";
 import { Navigate } from "react-router-dom";

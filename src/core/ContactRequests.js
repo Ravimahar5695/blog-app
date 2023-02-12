@@ -5,7 +5,6 @@ import { deleteContactRequest, getAllContactsRequests } from "./helper/apicalls"
 import {useState, useEffect} from "react";
 import Menu from "../core/Menu";
 import Footer from "../core/Footer";
-import {Link} from "react-router-dom";
 
 const ContactRequests = () => {
 

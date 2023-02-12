@@ -1,5 +1,3 @@
-import Menu from "../core/Menu";
-import Footer from "../core/Footer";
 import {useState} from "react";
 import {Link} from "react-router-dom";
 import {register} from "./helper/authapicalls";

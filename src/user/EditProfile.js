@@ -28,10 +28,11 @@ const EditProfile = () => {
         cursor: "pointer",
         formData: new FormData(),
         buttonClass: "btn btn-dark w-50",
-        checkBoxClass: "d-none"
+        checkBoxClass: "d-none",
+        xmarkClass: "d-none"
     });
 
-    const {picture, bio, mobile, facebook, instagram, twitter, linkedin, youtube, website, error, success, buttonText, cursor, formData, buttonClass, checkBoxClass} = values;
+    const {picture, bio, mobile, facebook, instagram, twitter, linkedin, youtube, website, error, success, buttonText, cursor, formData, buttonClass, checkBoxClass, xmarkClass} = values;
 
     const {userId} = useParams();
     const {token} = isAuthenticated();
@@ -92,9 +93,9 @@ const EditProfile = () => {
         formData.set("website", website);
         editProfile(userId, token, formData).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Save", buttonClass: "btn btn-danger w-50", checkBoxClass: "d-inline text-danger px-3", error: data.error});
+                setValues({...values, buttonText: "Save", buttonClass: "btn btn-danger w-50", checkBoxClass: "d-none", xmarkClass: "d-inline text-danger px-3", error: data.error});
             } else{
-                setValues({...values, buttonText: "Saved", buttonClass: "btn btn-success w-50", checkBoxClass: "d-inline text-success px-3", error: "", success: true, bio: "", mobile: "", picture: "", facebook: "", instagram: "", twitter: "", linkedin: "", youtube: "", website: ""});
+                setValues({...values, buttonText: "Saved", buttonClass: "btn btn-success w-50", checkBoxClass: "d-inline text-success px-3", xmarkClass: "d-none", error: "", success: true, bio: "", mobile: "", picture: "", facebook: "", instagram: "", twitter: "", linkedin: "", youtube: "", website: ""});
             }
         })
     }
@@ -175,6 +176,7 @@ const EditProfile = () => {
                 </div>
                 <button className={buttonClass} style={{cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
                 <span className={checkBoxClass}><i class="fa-solid fa-check"></i></span>
+                <span className={xmarkClass}><i class="fa-solid fa-xmark"></i></span>
             </form>
         );
     }
