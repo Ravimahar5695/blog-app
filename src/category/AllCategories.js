@@ -19,16 +19,18 @@ const AllCategories = () => {
     }, [])
 
     return (
-        <div className="container">
+        <div>
             <Menu/>
-            <h1 className="text-center mb-4">All Categories</h1>
-            <ul>
-                {categories &&
-                    categories.map((category, index) => {
-                        return <Link className="list-group-item text-primary" to={`/category/${category._id}/posts`}>{category.name}</Link>
-                    })
-                }
-            </ul>
+            <div className="container">
+                <h1 className="text-center mb-4">All Categories</h1>
+                <ul>
+                    {categories &&
+                        categories.map((category, index) => {
+                            return <Link className="list-group-item text-primary" to={`/category/${category._id}/posts`}>{category.name}</Link>
+                        })
+                    }
+                </ul>
+            </div>
             <Footer/>
         </div>
     );

@@ -28,51 +28,41 @@ const ViewPosts = () => {
         return (
             <div>
                 <Menu/>
-                <div className="container">
-                <h1 className="text-center">Posts</h1>
-                <div className='row text-center'>
-                <div className="col-1 border py-2">
-                        <b>#</b>
-                    </div>
-                    <div className="col-6 border py-2">
-                        <b>Title</b>
-                    </div>
-                    <div className="col-2 border py-2">
-                        <b>Category</b>
-                    </div>
-                    <div className="col-2 border py-2">
-                        <b>Update</b>
-                    </div>
-                    <div className="col-1 border py-2">
-                        <b>Delete</b>
-                    </div>
-                </div>
-                    {posts && posts.map((post, index) => {
-                        return (
-                            <div key={index} className='row text-center'>
-                                <div className="col-1 border py-2">
-                                    {index+1}
-                                </div>
-                                <div className="col-6 border py-2">
-                                    {post.title}
-                                </div>
-                                <div className="col-2 border py-2">
-                                    {post.category.name}
-                                </div>
-                                <div className="col-2 border py-2">
-                                    <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
-                                </div>
-                                <div className="col-1 border py-2">
-                                    <i className="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
-                                        deletePost(userId, token, post._id);
-                                        window.location.reload();
-                                    }}></i>
-                                </div>
-                            </div>
-                        );
-                    })}
+                <div className="container" style={{overflowX: "auto"}}>
+                    <h1 className="text-center">Posts</h1>
+                    <table className="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {posts && posts.map((post, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{index+1}</td>
+                                        <td>{post.title}</td>
+                                        <td>{post.category.name}</td>
+                                        <td>
+                                            <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
+                                        </td>
+                                        <td>
+                                            <i className="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
+                                                deletePost(userId, token, post._id);
+                                                window.location.reload();
+                                            }}></i>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
                     <div className="mb-5"></div>
-                    </div>
+                </div>
                 <Footer/>
             </div>
         );

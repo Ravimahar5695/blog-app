@@ -30,58 +30,44 @@ const AdminViewPosts = () => {
         return (
             <div>
                 <Menu/>
-                <div className="container">
-                <h1 className="text-center mb-4">Posts</h1>
-                <div className='row text-center'>
-                <div className="col-1 border py-2">
-                        <b>#</b>
-                    </div>
-                    <div className="col-5 border py-2">
-                        <b>Title</b>
-                    </div>
-                    <div className="col-2 border py-2">
-                        <b>Category</b>
-                    </div>
-                    <div className="col-2 border py-2">
-                        <b>Author</b>
-                    </div>
-                    <div className="col-1 border py-2">
-                        <b>Update</b>
-                    </div>
-                    <div className="col-1 border py-2">
-                        <b>Delete</b>
-                    </div>
+                <div className="container" style={{overflowX: "auto"}}>
+                    <h1 className="text-center mb-4">Posts</h1>
+                    <table className="table table-bordered text-center">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Author</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {posts && posts.map((post, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td>{index+1}</td>
+                                        <td>{post.title}</td>
+                                        <td>{post.category.name}</td>
+                                        <td>{post.user.name}</td>
+                                        <td>
+                                            {post.user._id === userId &&
+                                                <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
+                                            }
+                                        </td>
+                                        <td>
+                                            <i class="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
+                                                adminDeletePost(userId, token, post._id);
+                                                window.location.reload();
+                                            }}></i>
+                                        </td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
                 </div>
-                {posts && posts.map((post, index) => {
-                        return (
-                            <div key={index} className='row text-center'>
-                                <div className="col-1 border py-2">
-                                    {index+1}
-                                </div>
-                                <div className="col-5 border py-2">
-                                    {post.title}
-                                </div>
-                                <div className="col-2 border py-2">
-                                    {post.category.name}
-                                </div>
-                                <div className="col-2 border py-2">
-                                    {post.user.name}
-                                </div>
-                                <div className="col-1 border py-2">
-                                    {post.user._id === userId &&
-                                        <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
-                                    }
-                                </div>
-                                <div className="col-1 border py-2">
-                                    <i class="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
-                                        adminDeletePost(userId, token, post._id);
-                                        window.location.reload();
-                                    }}></i>
-                                </div>
-                            </div>
-                        );
-                    })}
-                    </div>
                 <Footer/>
             </div>
         );

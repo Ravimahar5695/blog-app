@@ -34,6 +34,7 @@ const Post = () => {
             }
         });
     });
+
     const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
     return (
         <div>
@@ -63,6 +64,20 @@ const Post = () => {
                     <TwitterIcon size={36}/>
                 </TwitterShareButton>
             </div>
+                <div className="card" >
+                    <div className="card-header bg-success text-light">
+                        Author Profile
+                    </div>
+                    <div className="card-body">
+                        <h5>{user.name}</h5>
+                        {
+                            user.profile && user.profile.bio && <p className="card-text">{user.profile.bio}</p>
+                        }
+                        <Link to={`/user/${user._id}/profile`} className="btn btn-success">View Profile</Link>
+                    </div>
+                </div>
+            
+
             <Comment post={post}/>
             {
                 post.comments && 
@@ -73,15 +88,15 @@ const Post = () => {
                             return (
                                 <li className="list-group-item">
                                     <div className="row">
-                                        <div className="col-lg-1">
+                                        <div className="col-1">
                                             <img src={commentImg} width="50px" height="50px" className="rounded-circle" style={{position: "relative", left: "50%", top: "50%", transform: "translate(-50%, -50%)"}}/>
                                         </div>
-                                        <div className="col-lg-10">
+                                        <div className="col-10">
                                             <h5 className="text-dark">{_.capitalize(value.name)}</h5>
                                             <small><a href={`mailto:${value.email}`} style={{color: "#333333", textDecoration: "none"}}>{value.email}</a></small>
                                             <p>{value.comment}</p>
                                         </div>
-                                        <div className="col-lg-1">
+                                        <div className="col-1">
                                             {
                                                 isAuthenticated() && role === 1 &&
                                                 <i className="fa-solid fa-trash text-dark" style={{cursor: "pointer"}} onClick={() => {

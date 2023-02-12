@@ -4,6 +4,8 @@ import {isAuthenticated, logout} from "../auth/helper/authapicalls";
 
 const Menu = () => {
 
+    const {userId} = isAuthenticated();
+
     const role = secureLocalStorage.getItem("role")
     
     return (
@@ -52,16 +54,26 @@ const Menu = () => {
                         </li>
                     }
                     {isAuthenticated() &&
-                    <li className="nav-item">
-                        <span className="nav-link" style={{cursor: "pointer"}} onClick={
-                            () => {
-                                logout();
-                                window.location.reload();
-                            }
-                            }>
-                                Logout
-                        </span>
-                    </li>}
+                        <li className="nav-link">
+                            <div className="dropdown">
+                                <button className="btn btn-secondary btn-sm rounded-circle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i className="fa-solid fa-user"></i>
+                                </button>
+                                <ul className="dropdown-menu">
+                                    <li><Link className="dropdown-item" to={`/user/${userId}/profile`}>Profile</Link></li>
+                                    <li>
+                                        <span className="dropdown-item" style={{cursor: "pointer"}} onClick={
+                                            () => {
+                                                logout();
+                                                window.location.reload();
+                                            }}>
+                                            Logout
+                                        </span>
+                                    </li>
+                                </ul>
+                             </div>
+                        </li>
+                    }
                 </ul>
                 </div>
             </div>

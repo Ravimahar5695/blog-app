@@ -69,3 +69,18 @@ export const updatePost = (userId, token, postId, formData) => {
         console.log(err);
     });
 }
+
+export const editProfile = (userId, token, formData) => {
+    return fetch(`${API}/user/${userId}/profile/edit`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`
+        },
+        body: formData
+    }).then((response) => {
+        return response.json();
+    }).catch((err) => {
+        console.log(err);
+    });
+}
