@@ -30,7 +30,7 @@ const ViewPosts = () => {
                 <Menu/>
                 <div className="container" style={{overflowX: "auto"}}>
                     <h1 className="text-center">Posts</h1>
-                    <table className="table table-bordered text-center">
+                    <table className="table table-bordered text-center table-striped">
                         <thead>
                             <tr>
                                 <th>#</th>

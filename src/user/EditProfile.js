@@ -6,6 +6,7 @@ import {useParams, Link} from "react-router-dom";
 import { editProfile, getUser } from "./helper/userapicalls";
 import { isAuthenticated } from "../auth/helper/authapicalls";
 import {Navigate} from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
 
 
@@ -29,10 +30,11 @@ const EditProfile = () => {
         formData: new FormData(),
         buttonClass: "btn btn-dark w-50",
         checkBoxClass: "d-none",
-        xmarkClass: "d-none"
+        xmarkClass: "d-none",
+        spinnerClass: ""
     });
 
-    const {picture, bio, mobile, facebook, instagram, twitter, linkedin, youtube, website, error, success, buttonText, cursor, formData, buttonClass, checkBoxClass, xmarkClass} = values;
+    const {picture, bio, mobile, facebook, instagram, twitter, linkedin, youtube, website, error, success, buttonText, cursor, formData, buttonClass, checkBoxClass, xmarkClass, spinnerClass} = values;
 
     const {userId} = useParams();
     const {token} = isAuthenticated();
@@ -81,7 +83,7 @@ const EditProfile = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading...", cursor: "progress"});
+        setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         formData.set("picture", picture);
         formData.set("bio", bio);
         formData.set("mobile", mobile);
@@ -174,14 +176,14 @@ const EditProfile = () => {
                     <label className="form-label">Website</label>
                     <input type="url" name="website" className="form-control" value={website} onChange={handleChange("website")}/>
                 </div>
-                <button className={buttonClass} style={{cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
+                <button className={buttonClass} style={{cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
                 <span className={checkBoxClass}><i class="fa-solid fa-check"></i></span>
                 <span className={xmarkClass}><i class="fa-solid fa-xmark"></i></span>
             </form>
         );
     }
 
-    if(isAuthenticated()){
+    if(isAuthenticated() && jwt_decode(isAuthenticated().token)._id == userId){
         return (
             <div>
                 <Menu/>
@@ -198,7 +200,7 @@ const EditProfile = () => {
             </div>
         );
     } else{
-        return <Navigate to="/login"/>
+        return <Navigate to="/"/>
     }
 }
 

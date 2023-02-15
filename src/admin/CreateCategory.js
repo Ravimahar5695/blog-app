@@ -17,10 +17,12 @@ const CreateCategory = () => {
         error: "",
         success: false,
         buttonText: "Create Category",
-        cursor: "pointer"
+        cursor: "pointer",
+        submitButtonClass: "btn text-light btn-dark",
+        spinnerClass: ""
     });
 
-    const {name, error, success, buttonText, cursor} = values;
+    const {name, error, success, buttonText, cursor, submitButtonClass, spinnerClass} = values;
 
     const handleChange = (event) => {
         setValues({...values, name: event.target.value});
@@ -28,12 +30,12 @@ const CreateCategory = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading...", cursor: "progress"});
+        setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         createCategory(userId, token, {name}).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Create Category", error: data.error});
+                setValues({...values, buttonText: "Create Category", error: data.error, submitButtonClass: "btn text-light btn-danger"});
             } else{
-                setValues({...values, buttonText: "Create Category", error: "", success: true, name: ""});
+                setValues({...values, buttonText: "Create Category", error: "", success: true, name: "", submitButtonClass: "btn text-light btn-success"});
             }
         });
     }
@@ -65,7 +67,7 @@ const CreateCategory = () => {
                     <label className="form-label">Category Name</label>
                     <input type="text" className="form-control" value={name} onChange={handleChange}/>
                 </div>
-                <button className="btn text-light bg-dark" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
+                <button className={submitButtonClass} style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>
         );
     }

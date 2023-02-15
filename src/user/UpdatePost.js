@@ -29,10 +29,12 @@ const UpdatePost = () => {
         success: false,
         buttonText: "Update Post",
         formData: "",
-        cursor: "pointer"
+        cursor: "pointer",
+        submitButtonClass: "btn text-light btn-dark w-25 mb-5",
+        spinnerClass: ""
     });
 
-    const {picture, category, title, description, error, success, buttonText, formData, cursor} = values;
+    const {picture, category, title, description, error, success, buttonText, formData, cursor, submitButtonClass, spinnerClass} = values;
 
     useEffect(() => {
         getAllCategories().then((data) => {
@@ -69,12 +71,12 @@ const UpdatePost = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading...", cursor: "progress"});
+        setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         updatePost(userId, token, postId, formData).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Update Post", error: data.error});
+                setValues({...values, buttonText: "Update Post", error: data.error, submitButtonClass: "btn text-light btn-danger w-25 mb-5"});
             } else{
-                setValues({...values, error: "", buttonText: "Update Post", success: true, title: "", description: ""});
+                setValues({...values, error: "", buttonText: "Update Post", success: true, title: "", description: "", submitButtonClass: "btn text-light btn-success w-25 mb-5"});
             }
         });
     }
@@ -142,13 +144,13 @@ const UpdatePost = () => {
                         content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }'
                         }}/>
                 </div>
-                <button className="btn text-light bg-dark w-25 mb-5" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
+                <button className={submitButtonClass} style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>
         );
     }
 
     if(!isAuthenticated()){
-        return <Navigate to="/login"/>
+        return <Navigate to="/"/>
     } else{
         return (
             <div className="container">

@@ -5,10 +5,13 @@ import Menu from "../core/Menu";
 import Footer from "../core/Footer";
 import { isAuthenticated } from "../auth/helper/authapicalls";
 import { API } from "../backend";
+import jwt_decode from "jwt-decode";
+import { getPostsByUser } from "../post/helper/postapicalls";
 
 const Profile = () => {
 
     const [user, setUser] = useState({});
+    const [postCount, setPostCount] = useState();
 
     const {userId} = useParams();
 
@@ -20,6 +23,9 @@ const Profile = () => {
                 setUser(data);
             }
         });
+        getPostsByUser(userId).then((data) => {
+            setPostCount(data.length)
+        })
     }, []);
 
     const profilePictureUrl = () => {
@@ -49,9 +55,12 @@ const Profile = () => {
                         {
                             user.profile && user.profile.bio && <p>{user.profile.bio}</p>
                         }
-                        <span className="badge bg-success"><a href={`mailto:${user.email}`} className="text-light text-decoration-none"><i class="fa-solid fa-envelope"></i> {user.email}</a></span><br/>
+                        <button type="button" class="btn btn-primary">
+                            Posts <span class="badge text-bg-secondary">{postCount}</span>
+                        </button><br/><br/>
+                        <span className="btn btn-sm btn-success"><a href={`mailto:${user.email}`} className="text-light text-decoration-none">{user.email} <span class="badge text-bg-secondary"><i class="fa-solid fa-envelope"></i></span></a></span><br/><br/>
                         {
-                            user.profile && user.profile.mobile && <span className="badge bg-success"><a href={`tel:${user.profile.mobile}`} className="text-light text-decoration-none"><i class="fa-solid fa-phone"></i> {user.profile.mobile}</a></span>
+                            user.profile && user.profile.mobile && <span className="badge bg-success"><a href={`tel:${user.profile.mobile}`} className="text-light text-decoration-none">{user.profile.mobile} <span class="badge text-bg-secondary"><i class="fa-solid fa-phone"></i></span></a></span>
                         }
                         <br/>
                         <br/>
@@ -74,9 +83,9 @@ const Profile = () => {
                             user.profile && user.profile.social && user.profile.social.website && <a href={user.profile.social.website} className="text-secondary p-2"><i className="fa-solid fa-globe"></i></a>
                         }
                     </div>
-                    {isAuthenticated() &&
+                    {isAuthenticated() && jwt_decode(isAuthenticated().token)._id == userId &&
                         <div className="col-md-2 p-3">
-                            <Link to={`/user/${user._id}/profile/edit`} className="btn btn-dark px-3">Edit</Link>
+                            <Link to={`/user/${isAuthenticated().userId}/profile/edit`} className="btn btn-dark px-3">Edit</Link>
                         </div>
                     }
                 </div>

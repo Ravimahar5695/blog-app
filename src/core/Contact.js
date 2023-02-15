@@ -10,10 +10,11 @@ const Contact = () => {
         error: "",
         success: false,
         buttonText: "Submit",
-        cursor: "pointer"
+        cursor: "pointer",
+        spinnerClass: ""
     });
 
-    const {name, email, message, error, success, buttonText, cursor} = values;
+    const {name, email, message, error, success, buttonText, cursor, spinnerClass} = values;
 
     const handleChange = (name) => {
         return (event) => {
@@ -23,7 +24,7 @@ const Contact = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setValues({...values, buttonText: "Loading...", cursor: "progress"});
+        setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass:"spinner-border spinner-border-sm"});
         contact({name, email, message}).then((data) => {
             if(data.error){
                 setValues({...values, buttonText: "Submit", error: data.error});
@@ -65,7 +66,7 @@ const Contact = () => {
                 <div className="mb-3">
                     <textarea className="form-control" placeholder="Message*" value={message} onChange={handleChange("message")}></textarea>
                 </div>
-                <button class="btn btn-warning text-light w-100" style={{cursor: `${cursor}`}} type="submit" onClick={handleSubmit}>{buttonText}</button>
+                <button class="btn btn-warning text-light w-100" style={{cursor: `${cursor}`}} type="submit" onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>
         );
     }

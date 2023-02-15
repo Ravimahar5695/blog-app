@@ -35,7 +35,7 @@ const Post = () => {
         });
     });
 
-    const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
+    const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
     return (
         <div>
             <Menu/>
@@ -44,6 +44,7 @@ const Post = () => {
             <div>
                 <Link to={`/category/${category._id}/posts`}><small className="text-muted badge bg-light">{category.name}</small></Link>&nbsp;
                 <Link to={`/user/${user._id}/posts`}><small className="text-muted badge bg-light">{user.name}</small></Link>
+                <br/><p className="badge text-secondary">Created on : {post.date}</p>
             </div>
             <h1 className="mt-3 mb-4 text-dark">{post.title}</h1>
             {parse(`<div>${post.description}</div>`)}
@@ -69,6 +70,7 @@ const Post = () => {
                         Author Profile
                     </div>
                     <div className="card-body">
+                        <img src={`${API}/user/${user._id}/picture`} className="rounded-circle" width="50px" height="50px"/>
                         <h5>{user.name}</h5>
                         {
                             user.profile && user.profile.bio && <p className="card-text">{user.profile.bio}</p>
@@ -88,15 +90,16 @@ const Post = () => {
                             return (
                                 <li className="list-group-item">
                                     <div className="row">
-                                        <div className="col-1">
-                                            <img src={commentImg} width="50px" height="50px" className="rounded-circle" style={{position: "relative", left: "50%", top: "50%", transform: "translate(-50%, -50%)"}}/>
+                                        <div className="col-md-1 d-flex justify-content-start align-items-center">
+                                            <img src={commentImg} width="40px" height="40px" className="rounded-circle" />
                                         </div>
-                                        <div className="col-10">
+                                        <div className="col-md-10">
                                             <h5 className="text-dark">{_.capitalize(value.name)}</h5>
                                             <small><a href={`mailto:${value.email}`} style={{color: "#333333", textDecoration: "none"}}>{value.email}</a></small>
                                             <p>{value.comment}</p>
+                                            <small className="text-secondary">{value.date}</small>
                                         </div>
-                                        <div className="col-1">
+                                        <div className="col-md-1 d-flex justify-content-start align-items-center">
                                             {
                                                 isAuthenticated() && role === 1 &&
                                                 <i className="fa-solid fa-trash text-dark" style={{cursor: "pointer"}} onClick={() => {

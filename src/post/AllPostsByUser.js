@@ -38,7 +38,10 @@ const AllPostsByUser = () => {
         <div>
             <Menu/>
             <h1 className="text-center">Posts by {userName}</h1>
-            <p className="text-center text-info mb-4"><Link to={`/user/${userId}/profile`} className="text-decoration-none">View Profile</Link></p>
+            <p className="text-center text-info"><Link to={`/user/${userId}/profile`} className="text-decoration-none">View Profile</Link></p>
+            <button type="button" className="btn btn-warning d-block mx-auto mb-4">
+                Posts <span className="badge bg-secondary">{posts.length}</span>
+            </button>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {posts.map((post, index) => {
                     const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
