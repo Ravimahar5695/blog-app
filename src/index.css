@@ -23,6 +23,16 @@ code {
   transform: translate(-50%, -50%);
 }
 
+.form-control:focus{
+    border-color: #ced4da;
+    box-shadow: none;
+}
+
+btn:focus-visible{
+    outline: 0;
+    box-shadow: none;
+}
+
 
 @media only screen and (width < 576px) {
   .login-container, .register-container{

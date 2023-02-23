@@ -48,13 +48,15 @@ const ViewPosts = () => {
                                         <td>{post.title}</td>
                                         <td>{post.category.name}</td>
                                         <td>
-                                            <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
+                                            <Link className="btn btn-primary rounded-0" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
                                         </td>
                                         <td>
-                                            <i className="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
-                                                deletePost(userId, token, post._id);
-                                                window.location.reload();
-                                            }}></i>
+                                            <button className="btn btn-danger rounded-0 cursor-pointer" onClick={() => {
+                                                    deletePost(userId, token, post._id);
+                                                    window.location.reload();
+                                                }}>
+                                                    <i className="fa-solid fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 );

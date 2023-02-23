@@ -27,13 +27,17 @@ const ContactRequests = () => {
                 <div className="container">
                     {contactRequests.map((cr, index) => {
                         return (
-                            <ul className="list-group mb-3" key={index}>
+                            <ul className="list-group rounded-0 mb-3" key={index}>
                                 <li className="list-group-item"><b>Name</b> {cr.name}</li>
                                 <li className="list-group-item"><b>Email Address </b><a className="text-decoration-none" href={`mailto: ${cr.email}?subject=Reply from Blog App`}>{cr.email}</a></li>
                                 <li className="list-group-item"><b>Message</b> {cr.message}</li>
-                                <li className="list-group-item"><button className="btn btn-dark text-white" onClick={() => {
-                                    deleteContactRequest(userId, token, cr._id);
-                                }}>Delete</button></li>
+                                <li className="list-group-item">
+                                    <button className="btn btn-danger rounded-0" onClick={() => {
+                                            deleteContactRequest(userId, token, cr._id);
+                                        }}>
+                                            <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </li>
                             </ul>
                         );
                     })}

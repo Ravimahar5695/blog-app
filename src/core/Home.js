@@ -60,7 +60,7 @@ const Home = () => {
             <div className="row">
                 <div className="col-lg-4">
                     <div className="card mb-4">
-                        <div className="card-header text-light bg-success">
+                        <div className="card-header text-light bg-danger rounded-0">
                             <b>Categories</b>
                         </div>
                         <ul className="list-group list-group-flush">
@@ -71,7 +71,7 @@ const Home = () => {
                 </div>
                 <div className="col-lg-4">
                     <div className="card mb-4">
-                        <div className="card-header text-light bg-success">
+                        <div className="card-header text-light bg-danger rounded-0">
                             <b>Authors</b>
                         </div>
                         <ul className="list-group list-group-flush">
@@ -82,7 +82,7 @@ const Home = () => {
                 </div>
                 <div className="col-lg-4">
                     <div className="card mb-4">
-                        <div className="card-header text-light bg-success">
+                        <div className="card-header text-light bg-danger rounded-0">
                             <b>Authors</b>
                         </div>
                         <ul className="list-group list-group-flush">

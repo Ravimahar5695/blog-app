@@ -26,7 +26,7 @@ const CreatePost = () => {
         formData: "",
         cursor: "pointer",
         spinnerClass: "",
-        submitButtonClass: "btn text-light w-25 btn-dark"
+        submitButtonClass: "btn btn-primary rounded-0 w-25"
     });
 
     const {picture, category, title, description, error, success, buttonText, categories, formData, cursor, spinnerClass, submitButtonClass} = values;
@@ -58,9 +58,9 @@ const CreatePost = () => {
         setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         createPost(userId, token, formData).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Post", error: data.error, submitButtonClass: "btn text-light w-25 btn-danger"});
+                setValues({...values, buttonText: "Post", error: data.error, submitButtonClass: "btn w-25 btn-danger rounded-0"});
             } else{
-                setValues({...values, buttonText: "Post", error: "", picture: "", category: "", title: "", description: "", success: true, submitButtonClass: "btn text-light w-25 btn-success"});
+                setValues({...values, buttonText: "Post", error: "", picture: "", category: "", title: "", description: "", success: true, submitButtonClass: "btn w-25 btn-success rounded-0"});
             }
         });
     }
@@ -90,11 +90,11 @@ const CreatePost = () => {
             <form>
                 <div className="mb-3">
                     <label className="form-label">Picture</label>
-                    <input type="file" className="form-control" onChange={handleChange("picture")}/>
+                    <input type="file" className="form-control rounded-0" onChange={handleChange("picture")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Category</label>
-                    <select className="form-control" onChange={handleChange("category")}>
+                    <select className="form-control rounded-0" onChange={handleChange("category")}>
                         <option>Select</option>
                         {categories && categories.map((category, index) => {
                             return (
@@ -105,7 +105,7 @@ const CreatePost = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Title</label>
-                    <input type="text" className="form-control" value={title} onChange={handleChange("title")}/>
+                    <input type="text" className="form-control rounded-0" value={title} onChange={handleChange("title")}/>
                 </div>
                 <div className="mb-3">
                     <Editor onChange={handleChange("description")}

@@ -18,7 +18,7 @@ const CreateCategory = () => {
         success: false,
         buttonText: "Create Category",
         cursor: "pointer",
-        submitButtonClass: "btn text-light btn-dark",
+        submitButtonClass: "btn btn-primary rounded-0",
         spinnerClass: ""
     });
 
@@ -33,9 +33,9 @@ const CreateCategory = () => {
         setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         createCategory(userId, token, {name}).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Create Category", error: data.error, submitButtonClass: "btn text-light btn-danger"});
+                setValues({...values, buttonText: "Create Category", error: data.error, submitButtonClass: "btn btn-danger rounded-0"});
             } else{
-                setValues({...values, buttonText: "Create Category", error: "", success: true, name: "", submitButtonClass: "btn text-light btn-success"});
+                setValues({...values, buttonText: "Create Category", error: "", success: true, name: "", submitButtonClass: "btn btn-success rounded-0"});
             }
         });
     }
@@ -65,7 +65,7 @@ const CreateCategory = () => {
             <form>
                 <div className="mb-3">
                     <label className="form-label">Category Name</label>
-                    <input type="text" className="form-control" value={name} onChange={handleChange}/>
+                    <input type="text" className="form-control rounded-0" value={name} onChange={handleChange}/>
                 </div>
                 <button className={submitButtonClass} style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>

@@ -66,8 +66,8 @@ const Post = () => {
                 </TwitterShareButton>
             </div>
                 <div className="card" >
-                    <div className="card-header bg-success text-light">
-                        Author Profile
+                    <div className="card-header bg-light text-dark rounded-0">
+                        <b>Author Profile</b>
                     </div>
                     <div className="card-body">
                         <img src={`${API}/user/${user._id}/picture`} className="rounded-circle" width="50px" height="50px"/>
@@ -75,7 +75,7 @@ const Post = () => {
                         {
                             user.profile && user.profile.bio && <p className="card-text">{user.profile.bio}</p>
                         }
-                        <Link to={`/user/${user._id}/profile`} className="btn btn-success">View Profile</Link>
+                        <Link to={`/user/${user._id}/profile`} className="btn btn-primary rounded-0">View Profile</Link>
                     </div>
                 </div>
             
@@ -95,7 +95,7 @@ const Post = () => {
                                         </div>
                                         <div className="col-md-10">
                                             <h5 className="text-dark">{_.capitalize(value.name)}</h5>
-                                            <small><a href={`mailto:${value.email}`} style={{color: "#333333", textDecoration: "none"}}>{value.email}</a></small>
+                                            <small><a href={`mailto:${value.email}`} className="text-primary text-decoration-none">{value.email}</a></small>
                                             <p>{value.comment}</p>
                                             <small className="text-secondary">{value.date}</small>
                                         </div>

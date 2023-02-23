@@ -2,7 +2,7 @@ import Contact from "./Contact";
 
 const Footer = () => {
     return (
-        <div className="p-4 text-center text-light mt-5 bg-success">
+        <div className="p-4 text-center text-light mt-5" style={{backgroundColor: "#17202A"}}>
             <div className="row">
                 <div className="col-lg-4 mb-4">
                     <h5>About Us</h5>

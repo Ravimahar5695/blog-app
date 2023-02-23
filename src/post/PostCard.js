@@ -21,7 +21,7 @@ const PostCard = ({imageurl, post, index, url}) => {
                     <Link to={url} className="text-decoration-none"><h5 className="card-title text-dark">{post.title}</h5></Link>
                     <p className="card-text text-muted">{post.description.replace(/<[^>]+>/g, '').substring(0, 100)}...</p>
                     <p className="card-text"><small className="text-muted badge bg-light">{post.category.name}</small></p>
-                    <Link className="btn btn-dark text-light" style={{border: "none"}} to={url}>Read more</Link>
+                    <Link className="btn btn-primary rounded-0 text-light d-block" style={{border: "none"}} to={url}>Read more</Link>
                 </div>
             </div>
         </div>

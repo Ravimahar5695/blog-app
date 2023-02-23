@@ -36,8 +36,8 @@ const AllPostsByCategory = () => {
         <div>
             <Menu/>
             <h1 className="text-center">Posts in {categoryName} category</h1>
-            <button type="button" className="btn btn-warning d-block mx-auto mb-4">
-                Posts <span className="badge bg-secondary">{posts.length}</span>
+            <button type="button" className="btn btn-primary rounded-0 d-block mx-auto mb-4">
+                Posts <span className="badge bg-secondary rounded-0">{posts.length}</span>
             </button>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {posts.map((post, index) => {

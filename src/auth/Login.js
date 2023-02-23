@@ -14,7 +14,7 @@ const Login = () => {
         success: false,
         buttonText: "Login",
         cursor: "pointer",
-        submitButtonClass: "btn text-light btn-dark w-100",
+        submitButtonClass: "btn btn-primary rounded-0 w-100",
         spinnerClass: ""
     });
 
@@ -31,9 +31,9 @@ const Login = () => {
         setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         login({email, password}).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Login", error: data.error, submitButtonClass: "btn text-light btn-danger w-100"});
+                setValues({...values, buttonText: "Login", error: data.error, submitButtonClass: "btn btn-danger rounded-0 w-100"});
             } else{
-                setValues({...values, buttonText: "Login", error: "", success: true, email: "", password: "", submitButtonClass: "btn text-light btn-success w-100"});
+                setValues({...values, buttonText: "Login", error: "", success: true, email: "", password: "", submitButtonClass: "btn btn-success rounded-0 w-100"});
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("userId", data.user._id);
                 secureLocalStorage.setItem("role", data.user.role);
@@ -64,11 +64,11 @@ const Login = () => {
             <form>
                 <div className="mb-3">
                     <label className="form-label">Email Address</label>
-                    <input type="email" className="form-control" value={email} onChange={handleChange("email")}/>
+                    <input type="email" className="form-control rounded-0" value={email} onChange={handleChange("email")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Password</label>
-                    <input type="password" className="form-control" value={password} onChange={handleChange("password")}/>
+                    <input type="password" className="form-control rounded-0" value={password} onChange={handleChange("password")}/>
                 </div>
                 <button type="button" className={submitButtonClass} style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>
@@ -81,7 +81,7 @@ const Login = () => {
         return (
             <div>
                 <div className="shadow p-5 login-container">
-                    <button className="btn btn-dark rounded-circle" onClick={() => {navigate(-1)}}><i class="fa-solid fa-arrow-left"></i></button>
+                    <button className="btn btn-primary rounded-circle" onClick={() => {navigate(-1)}}><i class="fa-solid fa-arrow-left"></i></button>
                     <h2 className="text-center mb-4">Login</h2>
                     {handleError()}
                     {handleSuccess()}

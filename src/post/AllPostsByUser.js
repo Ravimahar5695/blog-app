@@ -39,8 +39,8 @@ const AllPostsByUser = () => {
             <Menu/>
             <h1 className="text-center">Posts by {userName}</h1>
             <p className="text-center text-info"><Link to={`/user/${userId}/profile`} className="text-decoration-none">View Profile</Link></p>
-            <button type="button" className="btn btn-warning d-block mx-auto mb-4">
-                Posts <span className="badge bg-secondary">{posts.length}</span>
+            <button type="button" className="btn btn-primary rounded-0 d-block mx-auto mb-4">
+                Posts <span className="badge bg-secondary rounded-0">{posts.length}</span>
             </button>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {posts.map((post, index) => {

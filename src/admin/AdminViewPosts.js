@@ -53,14 +53,16 @@ const AdminViewPosts = () => {
                                         <td>{post.user.name}</td>
                                         <td>
                                             {post.user._id === userId &&
-                                                <Link className="text-dark" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
+                                                <Link className="btn btn-primary rounded-0" to={`/user/${userId}/post/${post._id}/update`}><i class="fa-solid fa-pen-to-square" style={{cursor: "pointer"}}></i></Link>
                                             }
                                         </td>
                                         <td>
-                                            <i class="fa-solid fa-trash" style={{cursor: "pointer"}} onClick={() => {
+                                            <button className="btn btn-danger rounded-0 cursor-pointer" onClick={() => {
                                                 adminDeletePost(userId, token, post._id);
                                                 window.location.reload();
-                                            }}></i>
+                                            }}>
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 );

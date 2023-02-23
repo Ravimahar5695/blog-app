@@ -55,12 +55,12 @@ const Profile = () => {
                         {
                             user.profile && user.profile.bio && <p>{user.profile.bio}</p>
                         }
-                        <button type="button" class="btn btn-primary">
-                            Posts <span class="badge text-bg-secondary">{postCount}</span>
+                        <button type="button" className="btn btn-primary rounded-0">
+                            Posts <span class="badge text-bg-secondary rounded-0">{postCount}</span>
                         </button><br/><br/>
-                        <span className="btn btn-sm btn-success"><a href={`mailto:${user.email}`} className="text-light text-decoration-none">{user.email} <span class="badge text-bg-secondary"><i class="fa-solid fa-envelope"></i></span></a></span><br/><br/>
+                        <span className="btn btn-sm btn-success rounded-0"><a href={`mailto:${user.email}`} className="text-light text-decoration-none">{user.email} <span className="badge text-bg-secondary rounded-0"><i className="fa-solid fa-envelope"></i></span></a></span><br/><br/>
                         {
-                            user.profile && user.profile.mobile && <span className="badge bg-success"><a href={`tel:${user.profile.mobile}`} className="text-light text-decoration-none">{user.profile.mobile} <span class="badge text-bg-secondary"><i class="fa-solid fa-phone"></i></span></a></span>
+                            user.profile && user.profile.mobile && <span className="badge bg-success rounded-0"><a href={`tel:${user.profile.mobile}`} className="text-light text-decoration-none">{user.profile.mobile} <span className="badge text-bg-secondary rounded-0"><i className="fa-solid fa-phone"></i></span></a></span>
                         }
                         <br/>
                         <br/>
@@ -85,7 +85,7 @@ const Profile = () => {
                     </div>
                     {isAuthenticated() && jwt_decode(isAuthenticated().token)._id == userId &&
                         <div className="col-md-2 p-3">
-                            <Link to={`/user/${isAuthenticated().userId}/profile/edit`} className="btn btn-dark px-3">Edit</Link>
+                            <Link to={`/user/${isAuthenticated().userId}/profile/edit`} className="btn btn-primary rounded-0 px-4"><i class="fa-solid fa-pen-to-square"></i></Link>
                         </div>
                     }
                 </div>

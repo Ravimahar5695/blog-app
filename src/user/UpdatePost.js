@@ -30,7 +30,7 @@ const UpdatePost = () => {
         buttonText: "Update Post",
         formData: "",
         cursor: "pointer",
-        submitButtonClass: "btn text-light btn-dark w-25 mb-5",
+        submitButtonClass: "btn btn-primary rounded-0 w-25",
         spinnerClass: ""
     });
 
@@ -74,9 +74,9 @@ const UpdatePost = () => {
         setValues({...values, buttonText: "Loading...", cursor: "progress", spinnerClass: "spinner-border spinner-border-sm"});
         updatePost(userId, token, postId, formData).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Update Post", error: data.error, submitButtonClass: "btn text-light btn-danger w-25 mb-5"});
+                setValues({...values, buttonText: "Update Post", error: data.error, submitButtonClass: "btn btn-danger rounded-0 w-25"});
             } else{
-                setValues({...values, error: "", buttonText: "Update Post", success: true, title: "", description: "", submitButtonClass: "btn text-light btn-success w-25 mb-5"});
+                setValues({...values, error: "", buttonText: "Update Post", success: true, title: "", description: "", submitButtonClass: "btn btn-success rounded-0 w-25"});
             }
         });
     }
@@ -106,11 +106,11 @@ const UpdatePost = () => {
             <form>
                 <div className="mb-3">
                     <label className="form-label">Picture</label>
-                    <input type="file" className="form-control" onChange={handleChange("picture")}/>
+                    <input type="file" className="form-control rounded-0" onChange={handleChange("picture")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Category</label>
-                    <select className="form-control" onChange={handleChange("category")}>
+                    <select className="form-control rounded-0" onChange={handleChange("category")}>
                         <option>Select</option>
                         {categories && categories.map((cat, index) => {
                             return (
@@ -121,7 +121,7 @@ const UpdatePost = () => {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Title</label>
-                    <input type="text" className="form-control" value={title} onChange={handleChange("title")}/>
+                    <input type="text" className="form-control rounded-0" value={title} onChange={handleChange("title")}/>
                 </div>
                 <div className="mb-3">
                     <Editor 
@@ -153,12 +153,14 @@ const UpdatePost = () => {
         return <Navigate to="/"/>
     } else{
         return (
-            <div className="container">
+            <div>
                 <Menu/>
-                <h1 className="text-center">Update Post</h1>
-                {handleError()}
-                {handleSuccess()}
-                {updatePostForm()}
+                <div className="container">
+                    <h1 className="text-center">Update Post</h1>
+                    {handleError()}
+                    {handleSuccess()}
+                    {updatePostForm()}
+                </div>
                 <Footer/>
             </div>
         )

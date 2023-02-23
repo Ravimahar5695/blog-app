@@ -30,22 +30,22 @@ const AllPosts = () => {
                 <h1 className="text-center">No more posts</h1>
                 {pageNumber > 1 &&
                     <div>
-                        <button className="btn text-light btn-dark" style={{border: "none"}} onClick={
+                        <button className="btn btn-secondary px-4 py-2 rounded-0" style={{border: "none"}} onClick={
                                 () => {
                                     pageNumber--;
                                     setPageNumber(pageNumber);
                                 }
                             }>
-                                Back
+                                <i class="fa-solid fa-angle-left"></i> Back
                         </button>
                         &nbsp;
-                        <button className="btn text-light btn-dark" style={{border: "none"}} onClick={
+                        <button className="btn btn-primary px-4 py-2 rounded-0" style={{border: "none"}} onClick={
                                 () => {
                                     pageNumber = 1;
                                     setPageNumber(pageNumber);
                                 }
                             }>
-                                Home
+                                Home 
                         </button>
                     </div>
                 }
@@ -67,16 +67,16 @@ const AllPosts = () => {
                 <div className="d-flex justify-content-center">
                     {pageNumber > 1 && 
                         <div>
-                            <button className="btn text-light btn-dark" style={{border: "none"}} onClick={
+                            <button className="btn text-light btn-secondary px-4 py-2 rounded-0" style={{border: "none"}} onClick={
                                     () => {
                                         pageNumber--;
                                         setPageNumber(pageNumber);
                                     }
                                 }>
-                                    Back
+                                    <i class="fa-solid fa-angle-left"></i> Back
                             </button>
                             &nbsp;
-                            <button className="btn text-light btn-dark" style={{border: "none"}} onClick={
+                            <button className="btn text-light btn-primary px-4 py-2 rounded-0" style={{border: "none"}} onClick={
                                     () => {
                                         pageNumber = 1;
                                         setPageNumber(pageNumber);
@@ -88,13 +88,13 @@ const AllPosts = () => {
                     }
                     &nbsp;
                     {posts.length > 0 &&
-                    <button className="btn text-light bg-dark d-inline-block" style={{border: "none", alignItems: "center"}} onClick={
+                    <button className="btn text-light bg-primary rounded-0 px-3 py-2 d-inline-block" style={{border: "none", alignItems: "center"}} onClick={
                             () => {
                                 pageNumber++;
                                 setPageNumber(pageNumber)
                             }
                         }>
-                            More posts
+                            More posts <i class="fa-solid fa-angle-right"></i>
                     </button>
                     }
                 </div>

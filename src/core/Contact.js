@@ -58,15 +58,15 @@ const Contact = () => {
         return (
             <form>
                 <div className="mb-3">
-                    <input type="text" className="form-control" placeholder="Name*" value={name} onChange={handleChange("name")}/>
+                    <input type="text" className="form-control rounded-0" placeholder="Name*" value={name} onChange={handleChange("name")}/>
                 </div>
                 <div className="mb-3">
-                    <input type="email" className="form-control" placeholder="Email Address*" value={email} onChange={handleChange("email")}/>
+                    <input type="email" className="form-control rounded-0" placeholder="Email Address*" value={email} onChange={handleChange("email")}/>
                 </div>
                 <div className="mb-3">
-                    <textarea className="form-control" placeholder="Message*" value={message} onChange={handleChange("message")}></textarea>
+                    <textarea className="form-control rounded-0" placeholder="Message*" value={message} onChange={handleChange("message")}></textarea>
                 </div>
-                <button class="btn btn-warning text-light w-100" style={{cursor: `${cursor}`}} type="submit" onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
+                <button class="btn btn-primary rounded-0 w-100" style={{cursor: `${cursor}`}} type="submit" onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
             </form>
         );
     }

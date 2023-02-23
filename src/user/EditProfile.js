@@ -28,7 +28,7 @@ const EditProfile = () => {
         buttonText: "Save",
         cursor: "pointer",
         formData: new FormData(),
-        buttonClass: "btn btn-dark w-50",
+        buttonClass: "btn btn-primary rounded-0 w-50",
         checkBoxClass: "d-none",
         xmarkClass: "d-none",
         spinnerClass: ""
@@ -95,9 +95,9 @@ const EditProfile = () => {
         formData.set("website", website);
         editProfile(userId, token, formData).then((data) => {
             if(data.error){
-                setValues({...values, buttonText: "Save", buttonClass: "btn btn-danger w-50", checkBoxClass: "d-none", xmarkClass: "d-inline text-danger px-3", error: data.error});
+                setValues({...values, buttonText: "Save", buttonClass: "btn btn-danger rounded-0 w-50", checkBoxClass: "d-none", xmarkClass: "d-inline text-danger px-3", error: data.error});
             } else{
-                setValues({...values, buttonText: "Saved", buttonClass: "btn btn-success w-50", checkBoxClass: "d-inline text-success px-3", xmarkClass: "d-none", error: "", success: true, bio: "", mobile: "", picture: "", facebook: "", instagram: "", twitter: "", linkedin: "", youtube: "", website: ""});
+                setValues({...values, buttonText: "Saved", buttonClass: "btn btn-success rounded-0 w-50", checkBoxClass: "d-inline text-success px-3", xmarkClass: "d-none", error: "", success: true, bio: "", mobile: "", picture: "", facebook: "", instagram: "", twitter: "", linkedin: "", youtube: "", website: ""});
             }
         })
     }
@@ -142,39 +142,39 @@ const EditProfile = () => {
                 <img src={pictureUrl} className="rounded-circle m-auto d-block" style={{width: "200px", height: "200px"}}/>
                 <div className="mb-3">
                     <label className="form-label">Picture</label>
-                    <input type="file" name="picture" className="form-control" onChange={handleChange("picture")}/>
+                    <input type="file" name="picture" className="form-control rounded-0" onChange={handleChange("picture")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Bio</label>
-                    <textarea rows="3" name="bio" className="form-control" value={bio} onChange={handleChange("bio")}></textarea>
+                    <textarea rows="3" name="bio" className="form-control rounded-0" value={bio} onChange={handleChange("bio")}></textarea>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Mobile Number</label>
-                    <input type="tel" name="mobile" className="form-control" value={mobile} onChange={handleChange("mobile")}/>
+                    <input type="tel" name="mobile" className="form-control rounded-0" value={mobile} onChange={handleChange("mobile")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Facebook</label>
-                    <input type="url" name="facebook" className="form-control" value={facebook} onChange={handleChange("facebook")}/>
+                    <input type="url" name="facebook" className="form-control rounded-0" value={facebook} onChange={handleChange("facebook")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Instagram</label>
-                    <input type="url" name="instagram" className="form-control" value={instagram} onChange={handleChange("instagram")}/>
+                    <input type="url" name="instagram" className="form-control rounded-0" value={instagram} onChange={handleChange("instagram")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Twitter</label>
-                    <input type="url" name="twitter" className="form-control" value={twitter} onChange={handleChange("twitter")}/>
+                    <input type="url" name="twitter" className="form-control rounded-0" value={twitter} onChange={handleChange("twitter")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Linkedin</label>
-                    <input type="url" name="linkedin" className="form-control" value={linkedin} onChange={handleChange("linkedin")}/>
+                    <input type="url" name="linkedin" className="form-control rounded-0" value={linkedin} onChange={handleChange("linkedin")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Youtube</label>
-                    <input type="url" name="youtube" className="form-control" value={youtube} onChange={handleChange("youtube")}/>
+                    <input type="url" name="youtube" className="form-control rounded-0" value={youtube} onChange={handleChange("youtube")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Website</label>
-                    <input type="url" name="website" className="form-control" value={website} onChange={handleChange("website")}/>
+                    <input type="url" name="website" className="form-control rounded-0" value={website} onChange={handleChange("website")}/>
                 </div>
                 <button className={buttonClass} style={{cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText} <span className={spinnerClass} role="status" aria-hidden="true"></span></button>
                 <span className={checkBoxClass}><i class="fa-solid fa-check"></i></span>

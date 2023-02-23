@@ -46,17 +46,17 @@ const Comment = ({post}) => {
             <form>
                 <div className="mb-3">
                     <label className="form-label">Full Name</label>
-                    <input type="text" className="form-control" value={name} onChange={handleChange("name")}/>
+                    <input type="text" className="form-control rounded-0" value={name} onChange={handleChange("name")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Email Address</label>
-                    <input type="email" className="form-control" value={email} onChange={handleChange("email")}/>
+                    <input type="email" className="form-control rounded-0" value={email} onChange={handleChange("email")}/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Comment</label>
-                    <textarea className="form-control" rows="3" value={comment} onChange={handleChange("comment")}></textarea>
+                    <textarea className="form-control rounded-0" rows="3" value={comment} onChange={handleChange("comment")}></textarea>
                 </div>
-                <button className="btn text-light bg-dark" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
+                <button className="btn btn-primary rounded-0" style={{border: "none", cursor: `${cursor}`}} onClick={handleSubmit}>{buttonText}</button>
             </form>
         );
     }
