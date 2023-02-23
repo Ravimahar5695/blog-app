@@ -32,8 +32,6 @@ const AllPostsByUser = () => {
         })
     }, []);
 
-    
-
     return (
         <div>
             <Menu/>
@@ -44,7 +42,7 @@ const AllPostsByUser = () => {
             </button>
             <div className="row row-cols-1 row-cols-md-3 g-4">
                 {posts.map((post, index) => {
-                    const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
+                    const imageurl = post.pictureUrl ? post.pictureUrl : "https://cdn.pixabay.com/photo/2022/12/01/00/13/antique-7627999_960_720.jpg";
                     return (
                         <PostCard imageurl={imageurl} post={post} index={index} url={`/post/${post._id}`}/>
                     );

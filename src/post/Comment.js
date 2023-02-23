@@ -34,7 +34,7 @@ const Comment = ({post}) => {
     const handleError = () => {
         if(error){
             return (
-                <div className="alert alert-danger">
+                <div className="alert alert-danger rounded-0">
                     {error}
                 </div>
             );

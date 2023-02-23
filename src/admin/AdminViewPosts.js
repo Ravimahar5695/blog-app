@@ -24,7 +24,7 @@ const AdminViewPosts = () => {
                 setPosts(data);
             }
         });
-    }, []);
+    }, [posts]);
 
     if(isAuthenticated() && role === 1){
         return (
@@ -59,7 +59,6 @@ const AdminViewPosts = () => {
                                         <td>
                                             <button className="btn btn-danger rounded-0 cursor-pointer" onClick={() => {
                                                 adminDeletePost(userId, token, post._id);
-                                                window.location.reload();
                                             }}>
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>

@@ -20,7 +20,7 @@ const ViewPosts = () => {
                 setPosts(data);
             }
         });
-    }, []);
+    }, [posts]);
 
     if(!isAuthenticated()){
         return <Navigate to="/login"/>
@@ -53,7 +53,6 @@ const ViewPosts = () => {
                                         <td>
                                             <button className="btn btn-danger rounded-0 cursor-pointer" onClick={() => {
                                                     deletePost(userId, token, post._id);
-                                                    window.location.reload();
                                                 }}>
                                                     <i className="fa-solid fa-trash"></i>
                                             </button>

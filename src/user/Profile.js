@@ -47,8 +47,8 @@ const Profile = () => {
             <Menu/>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-4 p-3">
-                        <img className="img-fluid" src={pictureUrl}/>
+                    <div className="col-md-4 p-3 d-flex justify-content-center align-items-center">
+                        <img src={pictureUrl} className="rounded-circle border" width="200" height="200"/>
                     </div>
                     <div className="col-md-6 p-3">
                         <h3>{user.name}</h3>

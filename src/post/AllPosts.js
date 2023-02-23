@@ -57,7 +57,7 @@ const AllPosts = () => {
             <div className="mb-5">
                 <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
                     {posts.map((post, index) => {
-                        const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
+                        const imageurl = post.pictureUrl ? post.pictureUrl : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
                         return (
                             <PostCard imageurl={imageurl} post={post} index={index} url={`post/${post._id}`}/>
                         );

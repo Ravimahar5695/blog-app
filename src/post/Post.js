@@ -35,7 +35,7 @@ const Post = () => {
         });
     });
 
-    const imageurl = post.picture ? `${API}/post/${post._id}/picture` : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
+    const imageurl = post.pictureUrl ? post.pictureUrl : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
     return (
         <div>
             <Menu/>
@@ -65,7 +65,7 @@ const Post = () => {
                     <TwitterIcon size={36}/>
                 </TwitterShareButton>
             </div>
-                <div className="card" >
+                <div className="card rounded-0" >
                     <div className="card-header bg-light text-dark rounded-0">
                         <b>Author Profile</b>
                     </div>
@@ -82,13 +82,13 @@ const Post = () => {
 
             <Comment post={post}/>
             {
-                post.comments && 
+                post.comments &&  post.comments.length > 0 &&
                 <ul className="list-group list-group-flush mt-5">
                     <h4>Comments</h4>
                     {
                         post.comments.map((value, index) => {
                             return (
-                                <li className="list-group-item">
+                                <li className="list-group-item" key={index}>
                                     <div className="row">
                                         <div className="col-md-1 d-flex justify-content-start align-items-center">
                                             <img src={commentImg} width="40px" height="40px" className="rounded-circle" />
@@ -102,9 +102,11 @@ const Post = () => {
                                         <div className="col-md-1 d-flex justify-content-start align-items-center">
                                             {
                                                 isAuthenticated() && role === 1 &&
-                                                <i className="fa-solid fa-trash text-dark" style={{cursor: "pointer"}} onClick={() => {
+                                                <button className="btn btn-danger rounded-0" onClick={() => {
                                                     adminDeleteComment(userId, token, post._id, value.uniqId);
-                                                }}></i>
+                                                }}>
+                                                    <i className="fa-solid fa-trash"></i>
+                                                </button>
                                             }
                                         </div>
                                     </div>
