@@ -4,15 +4,16 @@ const Footer = () => {
     return (
         <div className="p-4 text-center text-light mt-5" style={{backgroundColor: "#17202A"}}>
             <div className="row">
-                <div className="col-lg-4 mb-4">
+                <div className="col-md-4">
                     <h5>About Us</h5>
                     <p>We provide a platform to authors where they can share their thoughts and knowledge.</p>
+                    <hr className="d-md-none"/>
                 </div>
-                <div className="col-lg-4 mb-4">
+                <div className="col-md-4">
                     <h5>Contact</h5>
                     <Contact/>
                 </div>
-                <div className="col-lg-4">
+                <div className="col-md-4">
                     <h5>Reach me at</h5>
                     <p><a href="mailto:ravimahar5695@gmail.com" className="text-light text-decoration-none">ravimahar5695@gmail.com</a></p>
                     <p><a href="tel:8503016814" className="text-light text-decoration-none">8503016814</a></p>

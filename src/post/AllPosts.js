@@ -1,8 +1,6 @@
 import {useState, useEffect} from "react";
 import { getAllPosts } from "./helper/postapicalls";
-import {API} from "../backend";
 import PostCard from "./PostCard";
-import { useParams } from "react-router-dom";
 
 const AllPosts = () => {
 
@@ -55,9 +53,9 @@ const AllPosts = () => {
     } else{
         return (
             <div className="mb-5">
-                <div className="row row-cols-1 row-cols-md-3 g-4 mb-5">
+                <div className="row row-cols-1 row-cols-md-3 g-4">
                     {posts.map((post, index) => {
-                        const imageurl = post.pictureUrl ? post.pictureUrl : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
+                        const imageurl = post.picture ? post.picture.url : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
                         return (
                             <PostCard imageurl={imageurl} post={post} index={index} url={`post/${post._id}`}/>
                         );
@@ -87,8 +85,8 @@ const AllPosts = () => {
                         </div>
                     }
                     &nbsp;
-                    {posts.length > 0 &&
-                    <button className="btn text-light bg-primary rounded-0 px-3 py-2 d-inline-block" style={{border: "none", alignItems: "center"}} onClick={
+                    {posts.length > 9 &&
+                    <button className="btn text-light bg-primary rounded-0 px-3 py-2 d-inline-block mt-5" style={{border: "none", alignItems: "center"}} onClick={
                             () => {
                                 pageNumber++;
                                 setPageNumber(pageNumber)

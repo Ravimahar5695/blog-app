@@ -35,7 +35,7 @@ const Post = () => {
         });
     });
 
-    const imageurl = post.pictureUrl ? post.pictureUrl : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
+    const imageurl = post.picture ? post.picture.url : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
     return (
         <div>
             <Menu/>
