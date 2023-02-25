@@ -9,7 +9,7 @@ const Menu = () => {
     const role = secureLocalStorage.getItem("role")
     
     return (
-        <nav className="navbar navbar-expand-lg mb-5 py-3 shadow-sm" style={{backgroundColor: "#F4F6F7"}}>
+        <nav className="navbar navbar-expand-lg mb-5 py-3 shadow-sm">
             <div className="container">
                 <Link className="navbar-brand text-dark" to="/">
                     <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo.svg" alt="Logo" width="35" height="30" className="d-inline-block align-text-top"/>

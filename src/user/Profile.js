@@ -30,8 +30,8 @@ const Profile = () => {
 
     const profilePictureUrl = () => {
         if(user.profile){
-            if(user.profile.profile_picture){
-                return `${API}/user/${userId}/picture`
+            if(user.profile.picture){
+                return user.profile.picture.url;
             } else{
                 return "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
             }

@@ -124,8 +124,8 @@ const EditProfile = () => {
 
     const profilePictureUrl = () => {
         if(user.profile){
-            if(user.profile.profile_picture){
-                return `${API}/user/${userId}/picture`
+            if(user.profile.picture){
+                return user.profile.picture.url;
             } else{
                 return "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
             }
@@ -142,7 +142,7 @@ const EditProfile = () => {
                 <img src={pictureUrl} className="rounded-circle m-auto d-block" style={{width: "200px", height: "200px"}}/>
                 <div className="mb-3">
                     <label className="form-label">Picture</label>
-                    <input type="file" name="picture" className="form-control rounded-0" onChange={handleChange("picture")}/>
+                    <input type="file" name="picture" className="form-control rounded-0" onChange={handleChange("picture")} accept="image/*"/>
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Bio</label>

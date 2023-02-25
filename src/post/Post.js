@@ -36,6 +36,21 @@ const Post = () => {
     });
 
     const imageurl = post.picture ? post.picture.url : "https://cdn.pixabay.com/photo/2015/02/18/10/48/social-media-640543_960_720.png";
+
+    const profilePictureUrl = () => {
+        if(user.profile){
+            if(user.profile.picture){
+                return user.profile.picture.url;
+            } else{
+                return "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+            }
+        } else{
+            return "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png"
+        }
+    }
+
+    let pictureUrl = profilePictureUrl();
+
     return (
         <div>
             <Menu/>
@@ -70,7 +85,7 @@ const Post = () => {
                         <b>Author Profile</b>
                     </div>
                     <div className="card-body">
-                        <img src={`${API}/user/${user._id}/picture`} className="rounded-circle" width="50px" height="50px"/>
+                        <img src={pictureUrl} className="rounded-circle" width="50px" height="50px"/>
                         <h5>{user.name}</h5>
                         {
                             user.profile && user.profile.bio && <p className="card-text">{user.profile.bio}</p>
